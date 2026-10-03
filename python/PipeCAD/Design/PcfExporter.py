@@ -69,9 +69,9 @@ def Export(branchList, filename):
 
         members = branch.Members
         for component in members:
-            type = component.Type
+            type = component.FullType
 
-            if type == "TUBI":
+            if type == "TUBING":
                 apos = component.Aposition
                 lpos = component.Lposition
 
@@ -84,12 +84,13 @@ def Export(branchList, filename):
                 # if
 
                 pcfFile.write("PIPE\n")
+                pcfFile.write("    COMPONENT-IDENTIFIER  {}\n".format(0))
                 pcfFile.write("    END-POINT  {0} {1} {2} {3}\n".format(apos.X, apos.Y, apos.Z, int(bore)))
                 pcfFile.write("    END-POINT  {0} {1} {2} {3}\n".format(lpos.X, lpos.Y, lpos.Z, int(bore)))
                 pcfFile.write("    PIPING-SPEC  {}\n".format(spec))
+                pcfFile.write("    CATEGORY {}\n".format(""))
                 pcfFile.write("    ITEM-CODE  {}\n".format(spec))
                 pcfFile.write("    ITEM-DESCRIPTION  {}\n".format(""))
-                pcfFile.write("    CATEGORY {}\n".format(""))
                 pcfFile.write("    CUT-PIECE-LENGTH {}\n".format(component.Itlength))
 
                 if len(spec) > 0:
@@ -99,8 +100,22 @@ def Export(branchList, filename):
                 arrive = component.Arrive
                 leave = component.Leave
 
+                apos = Position()
+                lpos = Position()
+
+                abore = 0
+                lbore = 0
+
+                skey = ""
+
                 pcfFile.write("{}\n".format(type))
-                pcfFile.write("    {0} {1}\n".format(arrive, leave))
+                pcfFile.write("    COMPONENT-IDENTIFIER  {}\n".format(0))
+                pcfFile.write("    END-POINT  {0} {1} {2} {3}\n".format(apos.X, apos.Y, apos.Z, int(abore)))
+                pcfFile.write("    END-POINT  {0} {1} {2} {3}\n".format(lpos.X, lpos.Y, lpos.Z, int(lbore)))
+                pcfFile.write("    SKEY  {}\n".format(skey))
+                pcfFile.write("    CATEGORY {}\n".format(""))
+                pcfFile.write("    ITEM-CODE  {}\n".format(""))
+                pcfFile.write("    ITEM-DESCRIPTION  {}\n".format(""))
             #
         # for
     # for
