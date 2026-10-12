@@ -46,7 +46,7 @@ def Export(branchList, filename):
     ispec = pipeline.Ispec
     tspec = pipeline.Tspec
 
-    pcfFile.write("PIPELINE-REFEREENCE {}\n".format(pipeline.Name))
+    pcfFile.write("PIPELINE-REFERENCE {}\n".format(pipeline.Name))
     if pspec.IsValid:
         pcfFile.write("    PIPING-SPEC  {}\n".format(pspec.Name))
     # if
@@ -58,6 +58,8 @@ def Export(branchList, filename):
     if tspec.IsValid:
         pcfFile.write("    TRACING-SPEC  {}\n".format(tspec.Name))
     # if
+
+    cid = 0
 
     # Item code dict.
     itemCodeDict = dict()
@@ -71,6 +73,8 @@ def Export(branchList, filename):
         for component in members:
             type = component.FullType
 
+            cid += 1
+
             if type == "TUBING":
                 apos = component.Aposition
                 lpos = component.Lposition
@@ -83,39 +87,142 @@ def Export(branchList, filename):
                     spec = spref.Name
                 # if
 
+                dtxr = component.Dtxrtext
+
                 pcfFile.write("PIPE\n")
-                pcfFile.write("    COMPONENT-IDENTIFIER  {}\n".format(0))
+                pcfFile.write("    COMPONENT-IDENTIFIER  {}\n".format(cid))
                 pcfFile.write("    END-POINT  {0} {1} {2} {3}\n".format(apos.X, apos.Y, apos.Z, int(bore)))
                 pcfFile.write("    END-POINT  {0} {1} {2} {3}\n".format(lpos.X, lpos.Y, lpos.Z, int(bore)))
                 pcfFile.write("    PIPING-SPEC  {}\n".format(spec))
                 pcfFile.write("    CATEGORY {}\n".format(""))
                 pcfFile.write("    ITEM-CODE  {}\n".format(spec))
-                pcfFile.write("    ITEM-DESCRIPTION  {}\n".format(""))
+                pcfFile.write("    ITEM-DESCRIPTION  {}\n".format(dtxr))
                 pcfFile.write("    CUT-PIECE-LENGTH {}\n".format(component.Itlength))
 
                 if len(spec) > 0:
-                    itemCodeDict[spec] = ""
+                    itemCodeDict[spec] = dtxr
                 # if
-            else:
-                arrive = component.Arrive
-                leave = component.Leave
+            elif type == "ELBOW":
+                pos = component.Position
+                apos = component.Aposition
+                lpos = component.Lposition
 
-                apos = Position()
-                lpos = Position()
+                abore = component.Abore
+                lbore = component.Lbore
 
-                abore = 0
-                lbore = 0
+                skey = component.Skey
+                dtxr = component.Dtxrtext
 
-                skey = ""
+                spec = ""
+                spref = component.Spref
+                if spref.IsValid:
+                    spec = spref.Name
+                # if
 
                 pcfFile.write("{}\n".format(type))
-                pcfFile.write("    COMPONENT-IDENTIFIER  {}\n".format(0))
+                pcfFile.write("    COMPONENT-IDENTIFIER  {}\n".format(cid))
+                pcfFile.write("    END-POINT  {0} {1} {2} {3}\n".format(apos.X, apos.Y, apos.Z, int(abore)))
+                pcfFile.write("    END-POINT  {0} {1} {2} {3}\n".format(lpos.X, lpos.Y, lpos.Z, int(lbore)))
+                pcfFile.write("    CENTRE-POINT  {0} {1} {2}\n".format(pos.X, pos.Y, pos.Z))
+                pcfFile.write("    SKEY  {}\n".format(skey))
+                pcfFile.write("    CATEGORY {}\n".format(""))
+                pcfFile.write("    ITEM-CODE  {}\n".format(spec))
+                pcfFile.write("    ITEM-DESCRIPTION  {}\n".format(dtxr))
+
+                if len(spec) > 0:
+                    itemCodeDict[spec] = dtxr
+                # if
+            elif type == "TEE":
+                pos = component.Position
+                apos = component.Aposition
+                lpos = component.Lposition
+
+                arrive = component.Arrive
+                leave = component.Leave
+                branch = 6 - arrive - leave
+                bpos = component.GetPosition("Pposition", branch)
+
+                abore = component.Abore
+                lbore = component.Lbore
+                bbore = 0
+
+                skey = component.Skey
+                dtxr = component.Dtxrtext
+
+                spec = ""
+                spref = component.Spref
+                if spref.IsValid:
+                    spec = spref.Name
+                # if
+
+                pcfFile.write("{}\n".format(type))
+                pcfFile.write("    COMPONENT-IDENTIFIER  {}\n".format(cid))
+                pcfFile.write("    END-POINT  {0} {1} {2} {3}\n".format(apos.X, apos.Y, apos.Z, int(abore)))
+                pcfFile.write("    END-POINT  {0} {1} {2} {3}\n".format(lpos.X, lpos.Y, lpos.Z, int(lbore)))
+                pcfFile.write("    BRANCH1-POINT  {0} {1} {2} {3}\n".format(bpos.X, bpos.Y, bpos.Z, int(bbore)))
+                pcfFile.write("    CENTRE-POINT  {0} {1} {2}\n".format(pos.X, pos.Y, pos.Z))
+                pcfFile.write("    SKEY  {}\n".format(skey))
+                pcfFile.write("    CATEGORY {}\n".format(""))
+                pcfFile.write("    ITEM-CODE  {}\n".format(spec))
+                pcfFile.write("    ITEM-DESCRIPTION  {}\n".format(dtxr))
+
+                if len(spec) > 0:
+                    itemCodeDict[spec] = dtxr
+                # if
+            elif type == "ATTACHMENT":
+                pos = component.Position
+
+                abore = 0
+
+                skey = "HG01"
+                dtxr = ""
+                #dtxr = component.Dtxrtext
+
+                spec = ""
+                spref = component.Spref
+                if spref.IsValid:
+                    spec = spref.Name
+                # if
+
+                pcfFile.write("{}\n".format("SUPPORT"))
+                pcfFile.write("    COMPONENT-IDENTIFIER  {}\n".format(cid))
+                pcfFile.write("    CO-ORDS  {0} {1} {2} {3}\n".format(pos.X, pos.Y, pos.Z, int(abore)))
+                pcfFile.write("    SKEY  {}\n".format(skey))
+                pcfFile.write("    CATEGORY {}\n".format(""))
+                pcfFile.write("    ITEM-CODE  {}\n".format(spec))
+                pcfFile.write("    ITEM-DESCRIPTION  {}\n".format(dtxr))
+
+                if len(spec) > 0:
+                    itemCodeDict[spec] = dtxr
+                # if
+            else:
+                apos = component.Aposition
+                lpos = component.Lposition
+
+                abore = component.Abore
+                lbore = component.Lbore
+
+                skey = component.Skey
+                dtxr = component.Dtxrtext
+
+                spec = ""
+                spref = component.Spref
+                if spref.IsValid:
+                    spec = spref.Name
+                # if
+
+                pcfFile.write("{}\n".format(type))
+                pcfFile.write("    COMPONENT-IDENTIFIER  {}\n".format(cid))
                 pcfFile.write("    END-POINT  {0} {1} {2} {3}\n".format(apos.X, apos.Y, apos.Z, int(abore)))
                 pcfFile.write("    END-POINT  {0} {1} {2} {3}\n".format(lpos.X, lpos.Y, lpos.Z, int(lbore)))
                 pcfFile.write("    SKEY  {}\n".format(skey))
                 pcfFile.write("    CATEGORY {}\n".format(""))
-                pcfFile.write("    ITEM-CODE  {}\n".format(""))
-                pcfFile.write("    ITEM-DESCRIPTION  {}\n".format(""))
+                pcfFile.write("    ITEM-CODE  {}\n".format(spec))
+                pcfFile.write("    ITEM-DESCRIPTION  {}\n".format(dtxr))
+
+                if len(spec) > 0:
+                    itemCodeDict[spec] = dtxr
+                # if
             #
         # for
     # for
