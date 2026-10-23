@@ -5,9 +5,9 @@
 | Design Modeling | :heavy_check_mark: | :heavy_check_mark:   |
 | Export Piping PCF | :heavy_check_mark: | :heavy_check_mark:   |
 | Export MTO | :warning: BASIC | :heavy_check_mark: |
-| Piping Isometric Drawing | :warning: BASIC | :heavy_check_mark: |
+| Piping Isometrics Drawing | :warning: BASIC | :heavy_check_mark: |
+| Piping Arrangement Drawing | :warning: BASIC | :heavy_check_mark: |
 | Nozzle Orientation Drawing | :warning: BASIC | :heavy_check_mark: |
-| Piping Layout Drawing | :warning: BASIC | :heavy_check_mark: |
 
 PipeCAD Personal Edition is **FREE** to use.
 
@@ -27,7 +27,7 @@ Stabilizer project:
 
 ![PipeCAD Spooler](docs/images/PipeCAD_Stabilizer.png)
 
-## Isometric Drawing
+## Piping Isometrics
 
 PipeCAD generate piping isometric drawing by IsoAlgo:
 
