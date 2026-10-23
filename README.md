@@ -4,6 +4,7 @@
 | :--- | :--- | :--- |
 | Design Modeling | :heavy_check_mark: | :heavy_check_mark:   |
 | Export Piping PCF | :heavy_check_mark: | :heavy_check_mark:   |
+| Export Review RVM | :heavy_check_mark: | :heavy_check_mark:   |
 | Export MTO | :warning: BASIC | :heavy_check_mark: |
 | Piping Isometrics Drawing | :warning: BASIC | :heavy_check_mark: |
 | Piping Arrangement Drawing | :warning: BASIC | :heavy_check_mark: |
