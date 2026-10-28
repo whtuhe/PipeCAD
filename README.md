@@ -1,6 +1,6 @@
 ## PipeCAD - Plant Piping Design Software.
 
-| PipeCAD | **Personal Edition** | **Professional Edition** |
+| PipeCAD | **Free Edition** | **Professional Edition** |
 | :--- | :--- | :--- |
 | Design Modeling | :heavy_check_mark: | :heavy_check_mark:   |
 | Export Piping PCF | :heavy_check_mark: | :heavy_check_mark:   |
@@ -10,7 +10,7 @@
 | Piping Arrangement Drawing | :warning: BASIC | :heavy_check_mark: |
 | Nozzle Orientation Drawing | :warning: BASIC | :heavy_check_mark: |
 
-PipeCAD Personal Edition is **FREE** to use.
+PipeCAD Free Edition is **FREE** to personal, commercial or enterprise use.
 
 PipeCAD Professional Edition is **NOT FREE**, you can send email consult to buy it.
 
