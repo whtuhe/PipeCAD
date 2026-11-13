@@ -138,7 +138,22 @@ class CylinderDialog(QDialog):
     # setupUi
 
     def activateName(self):
-        pass
+        index = self.comboName.currentIndex
+        if index != 0:
+            cylinder = DbElement.Current
+            if cylinder.Type != 'CYLI':
+                QMessageBox.warning(self, '', self.tr('Please select Cylinder to modify!'))
+                return
+            # if
+            
+            pos = cylinder.Position
+            self.textPx.text = str(pos.X)
+            self.textPy.text = str(pos.Y)
+            self.textPz.text = str(pos.Z)
+            
+            self.textDiameter.text = str(cylinder.Diameter)
+            self.textHeight.text = str(cylinder.Height)
+        # if
     # activateName
 
     def createCylinder(self):
@@ -179,7 +194,7 @@ class CylinderDialog(QDialog):
 
             Project.Current.OpenTransaction()
 
-            cylinder = DbElement.Current.Get(self.textName.text)
+            cylinder = DbElement.Current
             cylinder.Position = Position(px, py, pz)
             cylinder.Diameter = d
             cylinder.Height = h
