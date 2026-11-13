@@ -139,12 +139,28 @@ class BoxDialog(QDialog):
         self.labelDiagram = QLabel()
         self.labelDiagram.setMinimumSize(QSize(280, 360))
         self.labelDiagram.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
-        self.labelDiagram.setPixmap(QPixmap(":/icons/diagram_box.png"))
+        self.labelDiagram.setPixmap(QPixmap(":/icons/diagram_box.svg"))
         self.horizontalLayout.addWidget(self.labelDiagram)
     # setupUi
 
     def activateName(self):
-        pass
+        index = self.comboName.currentIndex
+        if index != 0:
+            box = DbElement.Current
+            if box.Type != 'BOX':
+                QMessageBox.warning(self, '', self.tr('Please select Box to modify!'))
+                return
+            # if
+
+            pos = box.Position
+            self.textPx.text = str(pos.X)
+            self.textPy.text = str(pos.Y)
+            self.textPz.text = str(pos.Z)
+
+            self.textXlen.text = str(box.Xlength)
+            self.textYlen.text = str(box.Ylength)
+            self.textZlen.text = str(box.Zlength)
+        # if
     # activateName
 
     def createBox(self):
@@ -174,6 +190,33 @@ class BoxDialog(QDialog):
             Project.Current.AbortTransaction()
         # try
     # createBox
+
+    def modifyBox(self):
+
+        try:
+            px = float(self.textPx.text)
+            py = float(self.textPy.text)
+            pz = float(self.textPz.text)
+
+            lx = float(self.textXlen.text)
+            ly = float(self.textYlen.text)
+            lz = float(self.textZlen.text)
+
+            Project.Current.OpenTransaction()
+
+            box = DbElement.Current
+            box.Position = Position(px, py, pz)
+            box.Xlength = lx
+            box.Ylength = ly
+            box.Zlength = lz
+
+            Project.Current.CommitTransaction()
+
+        except Exception as ex:
+            QMessageBox.critical(self, '', ex)
+            Project.Current.AbortTransaction()
+        # try
+    # modifyBox
 
     def accept(self):
         index = self.comboName.currentIndex
