@@ -96,21 +96,178 @@ dlg.show()
 
 ### 2. 项目接口
 
+```py
+from PipeCAD.Database import *
 
+# 当前打开的项目
+project = Project.Current
+
+# 项目名称
+name = project.Name
+
+# 项目代号
+code = project.Code
+
+# 项目描述
+desc = project.Description
+
+# 保存
+project.Save()
+
+```
 
 ### 3. 查找元素
 
+提供两种查找元素的方法：根据元素ID和名称字符串。对于查找到的元素，使用之前必须使用属性 `IsValid` 进行检查。通过 `DbElement.Current` 来获取当前元素。
+
+```py
+from PipeCAD.Database import *
+
+# 通过元素唯一ID来查找
+elem = Project.GetElement(123)
+
+# 通过元素名称来查找
+elem = Project.GetElement('name')
+
+# 检查元素是否有效
+elem.IsValid
+
+# 获取当前元素
+ce = DbElement.Current
+
+```
+
 ### 4. 创建元素
+
+通过 `DbElement.Create(index, type)` 来创建成员元素。其中 `index` 参数为创建的新元素在成员元素中的位置。当 `index` 小于等于1时，新元素位于第一个；当 `index` 大于成员元素个数时，新元素位于最后一个。第二个参数为元素类型，使用大写字符串，并且使用元素类型的简称。元素类型简称请参考： `data/ElementType.md` 。
+
+```py
+from PipeCAD.Database import *
+
+# 当前元素
+ce = DbElement.Current
+
+# 创建元素
+elem = ce.Create(2, 'ZONE')
+
+# 在当前元素的子成员中第一个位置创建新元素
+elem = ce.Create(1, 'SITE')
+
+```
 
 ### 5. 删除元素
 
+通过 `DbElement.Delete()` 来删除元素。。
+
+```py
+from PipeCAD.Database import *
+
+# 当前元素
+ce = DbElement.Current
+
+# 删除元素
+ce.Delete()
+
+```
+
 ### 6. 读写属性
 
+在 `DbElement` 中为元素属性的读写提供两种方式：
+
++ 使用 `GetAttribute()/SetAttribute()`；
++ 直接使用属性名称来查询和设值；
+
+其中属性的名称必须是在 `data/Attribute.md` 中。
+
+```py
+from PipeCAD.Database import *
+
+# 当前元素
+ce = DbElement.Current
+
+# 读属性方式1：通过函数根据属性名称来读取属性
+name = ce.GetString('Name')
+
+# 读属性方式2：使用对象的属性的方式直接读取属性
+name = ce.Name
+
+# 写属性方式1：通过函数根据属性名称来设置属性
+ce.SetAttribute('Name', 'new-name')
+
+```
+
 ### 7. 几何属性
+
+元素 `DbElement` 中包含三个几何属性：位置 Position， 方向 Direction 和 坐标系 Orientation。
+
+```py
+from PipeCAD.Geometry import *
+from PipeCAD.Database import *
+
+# 当前元素
+ce = DbElement.Current
+
+# 创建长方体 BOX
+box = ce.Create(0, 'BOX')
+
+# 设置长方体的尺寸
+box.Xlength = 10
+box.Ylength = 20
+box.Zlength = 6
+
+# 设置长方体的位置
+box.Position = Position(0, 10, 200)
+
+# 设置长方体的坐标系
+dx = Direction(0, 1, 0)
+dy = Direction(0, 0, 1)
+box.Orientation = Orientation(dx, dy)
+
+```
 
 ### 8. 事件处理
 
 ### 9. 事务机制
+
+PipeCAD 为数据修改提供事务机制，如果想将增删改的数据修改打包成一次 `Undo` 撤销，可以使用事务机制。在数据改变之前先开启事务 `OpenTransaction`，数据改变完成后，提交事务 `CommitTransaction`。有异常报错时，必须终止事务 `AbortTransaction`。
+
+相关接口使用如下：
+
+```py
+from PipeCAD.Database import *
+
+try:
+    # 开启事务
+    Project.Current.OpenTransaction()
+
+    # 数据增删改
+    site = DbElement.Current.Create(0, 'SITE')
+    site.Name = name
+    site.Description = self.textDescription.text
+    site.Function = self.textFunction.text
+    site.Purpose = self.textPurpose.text
+
+    # 提交事务
+    Project.Current.CommitTransaction()
+except Exception as ex:
+    QMessageBox.critical(self,  '', ex)
+
+    # 当有异常时，必须终止事务
+    Project.Current.AbortTransaction()
+# try
+
+# 撤销
+Project.Current.Undo()
+
+# 重做
+Project.Current.Redo()
+
+# 是否可以撤销
+canUndo = Project.Current.CanUndo
+
+# 是否可以重做
+canRedo = Project.Current.CanRedo
+```
 
 ### 10. 图形接口
 
