@@ -19,9 +19,9 @@
 from PythonQt.QtCore import *
 from PythonQt.QtGui import *
 
-from PipeCAD import MainWindow
 from PipeCAD.Geometry import *
 from PipeCAD.Database import *
+from PipeCAD.GUI import MainWindow
 
 class CylinderDialog(QDialog):
     def __init__(self, parent = None):
