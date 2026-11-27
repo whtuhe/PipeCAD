@@ -24,6 +24,79 @@ from PipeCAD.Geometry import *
 from PipeCAD.Database import *
 from PipeCAD.GUI import *
 
+
+class ProjectDialog(QDialog):
+    def __init__(self, parent = None):
+        QDialog.__init__(self, parent)
+
+        self.setupUi()
+    # __init__
+
+    def tr(self, text, comment = None):
+        return QCoreApplication.translate(self.__class__.__name__, text, comment)
+    # tr
+
+    def setupUi(self):
+        self.setWindowTitle(self.tr("Create Project"))
+        self.setMinimumWidth(360)
+
+        self.verticalLayout = QVBoxLayout(self)
+
+        # Project Details.
+        self.groupProject = QGroupBox(self.tr('Project Details'))
+
+        self.formLayout = QFormLayout(self.groupProject)
+
+        self.textCode = QLineEdit()
+        self.textName = QLineEdit()
+        self.textDesc = QLineEdit()
+
+        codeRegex = QRegularExpression('^[A-Z]*$')
+        nameRegex = QRegularExpression('^[a-zA-Z]*$')
+
+        codeValidator = QRegularExpressionValidator(codeRegex, self.textCode)
+        nameValidator = QRegularExpressionValidator(nameRegex, self.textName)
+
+        self.textCode.setValidator(codeValidator)
+        self.textName.setValidator(nameValidator)
+
+        self.formLayout.addRow(self.tr('Code'), self.textCode)
+        self.formLayout.addRow(self.tr('Name'), self.textName)
+        self.formLayout.addRow(self.tr('Description'), self.textDesc)
+
+        self.verticalLayout.addWidget(self.groupProject)
+
+        # Action buttons.
+        self.buttonBox = QDialogButtonBox()
+        self.buttonBox.setStandardButtons(QDialogButtonBox.Ok|QDialogButtonBox.Cancel)
+        self.verticalLayout.addWidget(self.buttonBox)
+
+        self.buttonBox.accepted.connect(self.accept)
+        self.buttonBox.rejected.connect(self.reject)
+    # setupUi
+
+    def accept(self):
+        code = self.textCode.text.strip()
+        name = self.textName.text.strip()
+
+        if not code or not name:
+            QMessageBox.critical(self, '', self.tr('Code and Name cannot be empty!'))
+            return
+        # if
+
+        project = Project.Current
+        project.Code = code
+        project.Name = name
+        project.Description = self.textDesc.text.strip()
+
+        if project.Create(name):
+            QMessageBox.information(self, '', self.tr('Create project succeed!'));
+            QDialog.accept(self)
+        # if
+
+    # accept
+# ProjectDialog
+
 class LoginDialog(QDialog):
     def __init__(self, parent = None):
         QDialog.__init__(self, parent)
@@ -152,6 +225,9 @@ class LoginDialog(QDialog):
 
     def createProject(self):
         QDialog.accept(self)
+
+        projectDlg = ProjectDialog(self)
+        projectDlg.exec()
     # accept
 
 # LoginDialog
