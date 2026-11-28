@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 128 128" width="128" height="128" fill="none" stroke="#13227a" stroke-width="7.32" stroke-linecap="round" stroke-linejoin="round">
+  <g transform="translate(63.9 63.9) scale(1.3667) translate(-63.9 -63.9)">
+  <path d="M35 103A68 68 0 0 0 103 35"/>
+  <path d="M35 67A32 32 0 0 0 67 35"/>
+  <path d="M45 85A51 51 0 0 0 85 45"/>
+  <path d="M35 67 45 85 35 103 25 85Z"/>
+  <path d="M67 35 85 25 103 35 85 45Z"/>
+  </g>
+</svg>

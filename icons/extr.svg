@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 128 128" width="128" height="128" fill="none" stroke="#13227a" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M58.5 14.8 121.4 48.1 102.4 58.8 79.9 46.9 48.2 64.7 7.8 43.3Z"/>
+  <path d="M121.4 48.1 121.4 90.3"/>
+  <path d="M102.4 58.8 102.4 101.0"/>
+  <path d="M79.9 46.9 79.9 89.1"/>
+  <path d="M48.2 64.7 48.2 107.0"/>
+  <path d="M7.8 43.3 7.8 85.6"/>
+  <path d="M121.4 90.3 102.4 101.0"/>
+  <path d="M102.4 101.0 79.9 89.1"/>
+  <path d="M79.9 89.1 48.2 107.0"/>
+  <path d="M48.2 107.0 7.8 85.6"/>
+</svg>

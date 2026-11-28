@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 128 128" width="128" height="128" fill="none" stroke="#13227a" stroke-width="8.32" stroke-linecap="round" stroke-linejoin="round">
+  <g transform="translate(63.9 60.9) scale(1.2024) translate(-63.9 -60.9)">
+  <path d="M64 16 84 26 108 88 64 106 20 88 44 26Z"/>
+  <path d="M44 26 64 36 84 26"/>
+  <path d="M64 36V106"/>
+  </g>
+</svg>

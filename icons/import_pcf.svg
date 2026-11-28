@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   t="1790486795175"
+   class="icon"
+   viewBox="0 0 1024 1024"
+   version="1.1"
+   p-id="8345"
+   width="64"
+   height="64"
+   id="svg2"
+   sodipodi:docname="import_pcf.svg"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="13.446077"
+     inkscape:cx="28.075102"
+     inkscape:cy="32.834855"
+     inkscape:window-width="2560"
+     inkscape:window-height="1494"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <path
+     d="M630.165904 0c5.700025 0 11.034664 2.338472 14.83468 6.35772l300.347474 322.270647a19.000083 19.000083 0 0 1 5.115407 12.934672v227.781771a9.792351 9.792351 0 0 1-9.938505 9.719273h-79.727273a9.792351 9.792351 0 0 1-10.011583-9.719273v-148.346806h-261.616534a39.24248 39.24248 0 0 1-39.827098-38.584785V96.461962H173.213896v814.226655h290.189737c5.553871 0 10.011582 4.384635 10.011582 9.646197v77.242647a9.792351 9.792351 0 0 1-10.011582 9.646196h-350.04A39.24248 39.24248 0 0 1 73.536535 968.638872V38.584785C73.536535 17.319307 91.367382 0 113.363633 0h516.802271z m191.243148 334.182238L639.081328 138.627532v195.554706h182.327724z"
+     fill="#13227a"
+     p-id="8346"
+     id="path1" />
+  <path
+     d="M772.593453 952.050338L676.423799 858.876851h264.101161c5.480793 0 9.938505-4.311557 9.938505-9.646196v-77.16957a9.792351 9.792351 0 0 0-9.938505-9.646196H674.231482l98.361971-95.292727a9.500042 9.500042 0 0 0 0-13.665444l-56.342555-54.588702a10.157737 10.157737 0 0 0-14.103909 0l-189.343139 183.423883a37.707858 37.707858 0 0 0 0 54.588702l189.343139 183.423883a10.157737 10.157737 0 0 0 14.103909 0l56.342555-54.661779a9.500042 9.500042 0 0 0 0-13.592367z"
+     fill="#13227a"
+     p-id="8347"
+     id="path2" />
+  <text
+     xml:space="preserve"
+     style="font-weight:bold;font-size:298.667px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code Bold';writing-mode:lr-tb;direction:ltr;fill:#000000;stroke-width:16"
+     x="198.71967"
+     y="666.3653"
+     id="text2"><tspan
+       sodipodi:role="line"
+       id="tspan2"
+       style="stroke-width:16"
+       x="198.71967"
+       y="666.3653">PCF</tspan></text>
+</svg>
