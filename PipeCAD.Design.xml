@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserInterfaceCustomization xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+  <Category Key="HOME" Text="HOME_TEXT">
+    <Panel Key="HOME_AI" Text="HOME_AI_TEXT">
+      <Action Key="HOME_AI_ASSISTANT" Text="HOME_AI_ASSISTANT_TEXT" ToolTip="HOME_AI_ASSISTANT_TOOLTIP" Icon="ai_assistant.svg" Module="PipeCAD.AI.Assistant" Method="show()" />
+    </Panel>
+  </Category>
+  <Category Key="GENERAL" Text="GENERAL_TEXT">
+    <Panel Key="GENERAL_CREATE" Text="GENERAL_CREATE_TEXT">
+      <Action Key="GENERAL_CREATE_SITE" Text="GENERAL_CREATE_SITE_TEXT" ToolTip="GENERAL_CREATE_SITE_TOOLTIP" Icon="site.svg" Module="PipeCAD.Design.General.Site" Method="Create()" />
+      <Action Key="GENERAL_CREATE_ZONE" Text="GENERAL_CREATE_ZONE_TEXT" ToolTip="GENERAL_CREATE_ZONE_TOOLTIP" Icon="zone.svg" Module="PipeCAD.Design.General.Zone" Method="Create()" />
+    </Panel>
+
+    <Panel Key="GENERAL_IMPORT" Text="GENERAL_IMPORT_TEXT">
+      <Action Key="GENERAL_IMPORT_PDMS" Text="GENERAL_IMPORT_PDMS_TEXT" ToolTip="GENERAL_IMPORT_PDMS_TOOLTIP" Icon="import_file.svg" Module="" Method="" />
+      <Action Key="GENERAL_IMPORT_PCF" Text="GENERAL_IMPORT_PCF_TEXT" ToolTip="GENERAL_IMPORT_PCF_TOOLTIP" Icon="import_pcf.svg" Module="" Method="" />
+    </Panel>
+
+    <Panel Key="GENERAL_EXPORT" Text="GENERAL_EXPORT_TEXT">
+      <Action Key="GENERAL_EXPORT_PCF" Text="GENERAL_EXPORT_PCF_TEXT" ToolTip="GENERAL_EXPORT_PCF_TOOLTIP" Icon="export_pcf.svg" Module="" Method="" />
+      <Action Key="GENERAL_EXPORT_RVM" Text="GENERAL_EXPORT_RVM_TEXT" ToolTip="GENERAL_EXPORT_RVM_TOOLTIP" Icon="export_rvm.svg" Module="" Method="" />
+    </Panel>
+  </Category>
+
+  <Category Key="EQUIPMENT" Text="EQUIPMENT_TEXT">
+    <Panel Key="EQUIPMENT_CREATE" Text="EQUIPMENT_CREATE_TEXT">
+      <Action Key="EQUIPMENT_CREATE_EQUI" Text="EQUIPMENT_CREATE_EQUI_TEXT" ToolTip="EQUIPMENT_CREATE_EQUI_TOOLTIP" Icon="equi.svg" Module="PipeCAD.Design.Equipment.Equipment" Method="CreateEquipment()" />
+      <Action Key="EQUIPMENT_CREATE_SUBE" Text="EQUIPMENT_CREATE_SUBE_TEXT" ToolTip="EQUIPMENT_CREATE_SUBE_TOOLTIP" Icon="sube.svg" Module="PipeCAD.Design.Equipment.Equipment" Method="CreateSubEquipment()" />
+    </Panel>
+
+    <Panel Key="EQUIPMENT_PRIMITIVE" Text="EQUIPMENT_PRIMITIVE_TEXT">
+      <Action Key="EQUIPMENT_PRIMITIVE_BOX" Text="EQUIPMENT_PRIMITIVE_BOX_TEXT" ToolTip="EQUIPMENT_PRIMITIVE_BOX_TOOLTIP" Icon="box.svg" Module="PipeCAD.Design.Equipment.PrimitiveBox" Method="Create()" />
+      <Action Key="EQUIPMENT_PRIMITIVE_CYLI" Text="EQUIPMENT_PRIMITIVE_CYLI_TEXT" ToolTip="EQUIPMENT_PRIMITIVE_CYLI_TOOLTIP" Icon="cyli.svg" Module="PipeCAD.Design.Equipment.PrimitiveCylinder" Method="Create()" />
+      <Action Key="EQUIPMENT_PRIMITIVE_CONE" Text="EQUIPMENT_PRIMITIVE_CONE_TEXT" ToolTip="EQUIPMENT_PRIMITIVE_CONE_TOOLTIP" Icon="cone.svg" Module="PipeCAD.Design.Equipment.PrimitiveCone" Method="Create()" />
+      <Action Key="EQUIPMENT_PRIMITIVE_DISH" Text="EQUIPMENT_PRIMITIVE_DISH_TEXT" ToolTip="EQUIPMENT_PRIMITIVE_DISH_TOOLTIP" Icon="dish.svg" Module="PipeCAD.Design.Equipment.PrimitiveDish" Method="Create()" />
+      <Action Key="EQUIPMENT_PRIMITIVE_PYRA" Text="EQUIPMENT_PRIMITIVE_PYRA_TEXT" ToolTip="EQUIPMENT_PRIMITIVE_PYRA_TOOLTIP" Icon="pyra.svg" Module="PipeCAD.Design.Equipment.PrimitivePyramid" Method="Create()" />
+      <Action Key="EQUIPMENT_PRIMITIVE_CTOR" Text="EQUIPMENT_PRIMITIVE_CTOR_TEXT" ToolTip="EQUIPMENT_PRIMITIVE_CTOR_TOOLTIP" Icon="ctor.svg" Module="PipeCAD.Design.Equipment.PrimitiveCircTorus" Method="Create()" />
+      <Action Key="EQUIPMENT_PRIMITIVE_RTOR" Text="EQUIPMENT_PRIMITIVE_RTOR_TEXT" ToolTip="EQUIPMENT_PRIMITIVE_RTOR_TOOLTIP" Icon="rtor.svg" Module="PipeCAD.Design.Equipment.PrimitiveRectTorus" Method="Create()" />
+      <Action Key="EQUIPMENT_PRIMITIVE_EXTR" Text="EQUIPMENT_PRIMITIVE_EXTR_TEXT" ToolTip="EQUIPMENT_PRIMITIVE_EXTR_TOOLTIP" Icon="extr.svg" Module="PipeCAD.Design.Equipment.PrimitiveExtrusion" Method="Create()" />
+      <Action Key="EQUIPMENT_PRIMITIVE_REVO" Text="EQUIPMENT_PRIMITIVE_REVO_TEXT" ToolTip="EQUIPMENT_PRIMITIVE_REVO_TOOLTIP" Icon="revo.svg" Module="PipeCAD.Design.Equipment.PrimitiveRevolution" Method="Create()" />
+    </Panel>
+
+    <Panel Key="EQUIPMENT_NOZZLE" Text="EQUIPMENT_NOZZLE_TEXT">
+      <Action Key="EQUIPMENT_NOZZLE_CREATE" Text="EQUIPMENT_NOZZLE_CREATE_TEXT" ToolTip="EQUIPMENT_NOZZLE_CREATE_TOOLTIP" Icon="nozzle_create.svg" Module="PipeCAD.Design.Equipment.Nozzle" Method="Create()" />
+      <Action Key="EQUIPMENT_NOZZLE_MODIFY" Text="EQUIPMENT_NOZZLE_MODIFY_TEXT" ToolTip="EQUIPMENT_NOZZLE_MODIFY_TOOLTIP" Icon="nozzle_modify.svg" Module="PipeCAD.Design.Equipment.Nozzle" Method="Modify()" />
+    </Panel>
+
+    <Panel Key="EQUIPMENT_CONNECT" Text="EQUIPMENT_CONNECT_TEXT">
+      <Action Key="EQUIPMENT_CONNECT_EXPLICIT" Text="EQUIPMENT_CONNECT_EXPLICIT_TEXT" ToolTip="EQUIPMENT_CONNECT_EXPLICIT_TOOLTIP" Icon="connect_explicit.svg" Module="PipeCAD.Design.Equipment.Connect" Method="ConnectExplicit()" />
+    </Panel>
+  </Category>
+
+  <Category Key="PIPING" Text="PIPING_TEXT">
+    <Panel Key="PIPING_PIPELINE" Text="PIPING_PIPELINE_TEXT" >
+      <Action Key="PIPING_PIPELINE_PIPE" Text="PIPING_PIPELINE_PIPE_TEXT" ToolTip="PIPING_PIPELINE_PIPE_TOOLTIP" Icon="pipe.svg" Module="PipeCAD.Design.Piping.Pipeline" Method="CreatePipe()" />
+      <Action Key="PIPING_PIPELINE_BRAN" Text="PIPING_PIPELINE_BRAN_TEXT" ToolTip="PIPING_PIPELINE_BRAN_TOOLTIP" Icon="bran.svg" Module="PipeCAD.Design.Piping.Pipeline" Method="CreateBranch()" />
+    </Panel>
+
+    <Panel Key="PIPING_COMPONENT" Text="PIPING_COMPONENT_TEXT" >
+      <Action Key="PIPING_COMPONENT_CREATE" Text="PIPING_COMPONENT_CREATE_TEXT" ToolTip="PIPING_COMPONENT_CREATE_TOOLTIP" Icon="comp_create.svg" Module="PipeCAD.Design.Piping.Component" Method="Create()" />
+      <Action Key="PIPING_COMPONENT_MODIFY" Text="PIPING_COMPONENT_MODIFY_TEXT" ToolTip="PIPING_COMPONENT_MODIFY_TOOLTIP" Icon="comp_modify.svg" Module="PipeCAD.Design.Piping.Component" Method="Modify()" />
+      <Action Key="PIPING_COMPONENT_ALIGN" Text="PIPING_COMPONENT_ALIGN_TEXT" ToolTip="PIPING_COMPONENT_ALIGN_TOOLTIP" Icon="comp_align.svg" Module="PipeCAD.Design.Piping.Component" Method="Align()" />
+      <Action Key="PIPING_COMPONENT_DIRECT" Text="PIPING_COMPONENT_DIRECT_TEXT" ToolTip="PIPING_COMPONENT_DIRECT_TOOLTIP" Icon="comp_direct.svg" Module="PipeCAD.Design.Piping.Component" Method="Direct()" />
+    </Panel>
+
+    <Panel Key="PIPING_ISOMETRICS" Text="PIPING_ISOMETRICS_TEXT" >
+      <Action Key="PIPING_ISOMETRICS_SETUP" Text="PIPING_ISOMETRICS_SETUP_TEXT" ToolTip="PIPING_ISOMETRICS_SETUP_TOOLTIP" Icon="iso_setup.svg" Module="PipeCAD.Design.Piping.IsoSetup" Method="Show()" />
+      <Action Key="PIPING_ISOMETRICS_CREATE" Text="PIPING_ISOMETRICS_CREATE_TEXT" ToolTip="PIPING_ISOMETRICS_CREATE_TOOLTIP" Icon="iso_create.svg" Module="PipeCAD.Design.Piping.Isometrics" Method="Create()" />
+    </Panel>
+  </Category>
+
+  <Category Key="STRUCTURE" Text="STRUCTURE_TEXT">
+  </Category>
+</UserInterfaceCustomization>

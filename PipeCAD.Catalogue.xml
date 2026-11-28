@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserInterfaceCustomization xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+  <Category Key="CATALOGUE" Text="CATALOGUE_TEXT">
+    <Panel Key="GENERAL_CREATE" Text="GENERAL_CREATE_TEXT">
+    </Panel>
+  </Category>
+  
+  <Category Key="SPECIFICATION" Text="SPECIFICATION_TEXT" />
+</UserInterfaceCustomization>
